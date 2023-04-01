@@ -58,7 +58,7 @@ const basket = [
 
 // Функция добовления товара в корзину.
 function basketAdd(g, b) {
-            if (products[g] === g || b <= products.available){
+            if (products[g] === g && b <= products.available){
                 return g = products[g], b = amount
         }
         basket.push({good: products[g], amount: b})
@@ -72,7 +72,7 @@ function basketDelete(g) {
     if (products[g] === g){
         return g = products[g]
     }
-    delete basket[g]
+     basket.splice(g)
 }
 
 // basketDelete(4)
@@ -85,25 +85,22 @@ function basketDelete() {
 }
 // basketDelete()
 
-// подсчитываем количество товаров в корзине
-const totalAmounts = basket.reduce(function(previous, items, index, array) {
-    return items.amount + previous;
-}, 0);
-
-
-// подсчитываем общую стоимость товаров в корзине
-const totalSum = basket.reduce(function(previous, items, index, array) {
-    return items.good.price * items.amount + previous;
-}, 0);
-
-
-const totalBasket = []
-
-function totalBasketAdd() {
-    totalBasket.push ({totalAmount: totalAmounts, totalSumm: totalSum })
-    
+function calcSumItemBasket(arr){
+    let total = [];
+    // подсчитываем количество товаров в корзине
+    let count = basket.reduce(function(previous, items, index, array) {
+        return items.amount + previous;
+    }, 0);
+    // подсчитываем общую стоимость товаров в корзине
+    let sum = basket.reduce(function(previous, items, index, array) {
+        return items.good.price * items.amount + previous;
+    }, 0);
+    // добовляем объекты
+    total.push({
+        totalAmaunt: count,
+        totalSum: sum,
+    });
+    return total;
 }
 
-totalBasketAdd()
-
-console.log(totalBasket)
+console.log(calcSumItemBasket(basket))

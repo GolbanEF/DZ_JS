@@ -1,14 +1,28 @@
-
 function primeNumber(n) {
-    for (let i = 2; i <= n; i++) {
-        for (let j = 2; j <= i; j++) {
-            if ((i % j == 0) && (j != i)) {
-                break;
-            } else {
-                console.log(i);
-                break;
-            }
-        }
+    let arr = [];
+    let cursorNumber = 2;
+    while(n != 0) {
+        if(isPrime(cursorNumber)) {
+            arr.push(cursorNumber);
+            n--;
+        } 
+        cursorNumber++;
     }
+    return arr;
 }
-return primeNumber(process.argv[2])
+
+
+function isPrime(number) {
+    var i = 2;
+    while(i <= number/2) {
+        if (number % i === 0) {
+            return false;
+        }
+        i++;
+    }
+    return true;
+}
+
+
+console.log(primeNumber(process.argv[2]));
+
