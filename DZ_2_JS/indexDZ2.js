@@ -58,10 +58,11 @@ const basket = [
 
 // Функция добовления товара в корзину.
 function basketAdd(g, b) {
-            if (products[g] === g && b <= products.available){
-                return g = products[g], b = amount
-        }
-        basket.push({good: products[g], amount: b})
+            if (products[g] in products) {
+                console.log("Уже есть такой товар в корзине!");
+            } else {      
+                basket.push({good: products[g], amount: b});
+            }
 }
 
 // basketAdd(4, 10)
