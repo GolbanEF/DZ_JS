@@ -3,7 +3,7 @@ const messages = document.querySelector( '.chat-widget__messages' );
 const input = document.querySelector('.chat-widget__input');
 
 let date = new Date();
-let timeDate = date.toLocaleString();
+let timeDate = date.toLocaleTimeString();
 
 function resetValue(elem)
 {
@@ -14,6 +14,11 @@ function keyCheck(event){
   if (this.value.length === 0) {
     return;
   }
+  
+  if(this.value.charAt(0) === ' ') {
+      input.value = '';
+    }
+  
   if (event.keyCode == 13) {
     messages.innerHTML += `
     <div class="message message_client">
