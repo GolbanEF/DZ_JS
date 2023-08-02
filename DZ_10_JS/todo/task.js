@@ -3,8 +3,8 @@ const tasksList = document.querySelector('.tasks__list');
 const button = document.querySelector('.tasks__add');
 
 function addRecord(event){
-  if (input.value.trim().length === 0) {
     event.preventDefault();
+  if (input.value.trim().length === 0) {
     return;
   }
   tasksList.insertAdjacentHTML('beforeEnd',
