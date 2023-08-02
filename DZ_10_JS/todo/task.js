@@ -4,6 +4,7 @@ const button = document.querySelector('.tasks__add');
 
 function addRecord(event){
   if (input.value.trim().length === 0) {
+    event.preventDefault();
     return;
   }
   tasksList.insertAdjacentHTML('beforeEnd',
@@ -12,7 +13,6 @@ function addRecord(event){
     <a href="#" class="task__remove">&times;</a>
   </div>`)
   input.value = '';
-  event.preventDefault();
 };
 
 function deleteRecord(event) {
